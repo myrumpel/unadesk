@@ -1,0 +1,73 @@
+{
+  "name": "test-task",
+  "version": "0.0.0",
+  "scripts": {
+    "ng": "ng",
+    "start": "ng serve",
+    "build": "ng build",
+    "watch": "ng build --watch --configuration development",
+    "test": "ng test",
+    "lint": "ng lint",
+    "lint:eslint": "eslint .",
+    "stylelint": "stylelint \"src/**/*.{css,scss}\" --allow-empty-input",
+    "stylelint:fix": "stylelint \"src/**/*.{css,scss}\" --fix --allow-empty-input",
+    "format": "prettier --write \"src/**/*.{ts,html,css,scss}\" \"*.{json,md,mjs}\"",
+    "format:check": "prettier --check \"src/**/*.{ts,html,css,scss}\" \"*.{json,md,mjs}\"",
+    "format:write": "prettier --write \"src/**/*.{ts,html,css,scss}\" \"*.{json,md,mjs}\"e",
+    "prepare": "husky"
+  },
+  "lint-staged": {
+    "*.{ts,html}": [
+      "eslint --fix --max-warnings 0",
+      "prettier --write"
+    ],
+    "*.{css,scss}": [
+      "stylelint --fix --allow-empty-input",
+      "prettier --write"
+    ],
+    "*.{json,md,mjs}": [
+      "prettier --write"
+    ]
+  },
+  "private": true,
+  "packageManager": "npm@11.6.1",
+  "dependencies": {
+    "@angular/common": "^21.2.0",
+    "@angular/compiler": "^21.2.0",
+    "@angular/core": "^21.2.0",
+    "@angular/forms": "^21.2.0",
+    "@angular/platform-browser": "^21.2.0",
+    "@angular/router": "^21.2.0",
+    "rxjs": "~7.8.0",
+    "tslib": "^2.3.0"
+  },
+  "devDependencies": {
+    "@angular/build": "^21.2.5",
+    "@angular/cli": "^21.2.5",
+    "@angular/compiler-cli": "^21.2.0",
+    "@eslint/js": "^10.0.1",
+    "@trivago/prettier-plugin-sort-imports": "^6.0.2",
+    "angular-eslint": "21.3.1",
+    "eslint": "^10.0.3",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-import-resolver-node": "^0.3.9",
+    "eslint-import-resolver-typescript": "^4.4.4",
+    "eslint-plugin-import-x": "^4.16.2",
+    "eslint-plugin-prettier": "^5.5.5",
+    "husky": "^9.1.7",
+    "jsdom": "^28.0.0",
+    "lint-staged": "^16.4.0",
+    "postcss": "^8.5.8",
+    "postcss-scss": "^4.0.9",
+    "prettier": "^3.8.1",
+    "sass": "^1.98.0",
+    "stylelint": "^16.26.1",
+    "stylelint-config-idiomatic-order": "^10.0.0",
+    "stylelint-config-prettier-scss": "^1.0.0",
+    "stylelint-order": "^8.1.1",
+    "stylelint-scss": "^7.0.0",
+    "typescript": "~5.9.2",
+    "typescript-eslint": "8.56.1",
+    "vitest": "^4.0.8"
+  }
+}
