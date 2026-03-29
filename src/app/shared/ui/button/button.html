@@ -1,1 +1,9 @@
-<p>button works!</p>
+<button
+  (click)="clicked.emit($event)"
+  [disabled]="disabled()"
+  [ngStyle]="{padding: size() === 'small' ? '6px 10px': ''}"
+  [type]="type()"
+  class="button {{variant() | defineVariant}}"
+>
+  <ng-content/>
+</button>

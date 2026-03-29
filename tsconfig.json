@@ -19,9 +19,6 @@
       ],
       "@layouts/*": [
         "src/app/layouts/*"
-      ],
-      "@ui/*": [
-        "src/ui/*"
       ]
     },
     "strict": true,

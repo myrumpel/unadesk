@@ -1,6 +1,5 @@
 import idiomaticOrder from 'stylelint-config-idiomatic-order'
 
-/** @type {import('stylelint').Config} */
 export default {
   extends: ['stylelint-config-prettier-scss', 'stylelint-config-idiomatic-order'],
   plugins: ['stylelint-order', 'stylelint-scss'],

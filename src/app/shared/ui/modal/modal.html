@@ -1,0 +1,14 @@
+<div (click)="closeModal.emit()" class="overlay"></div>
+<main class="modal">
+
+  <p class="modal__title">
+    <ng-content select="[uk-modal-title]"/>
+  </p>
+  <p class="modal__text">
+    <ng-content/>
+  </p>
+  <div class="modal__footer">
+    <ng-content select="[uk-modal-footer]"/>
+  </div>
+</main>
+

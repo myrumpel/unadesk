@@ -1,0 +1,42 @@
+<div class="field">
+  <label
+    [for]="labelText()"
+    class="field__label"
+  >{{ labelText() }}</label
+  >
+
+  <ng-container *ngTemplateOutlet="inputType"/>
+
+  @if (invalid() && touched() && errors().length > 0) {
+    @for (err of errors(); track $index) {
+      @if (err.message) {
+        <p class="field__error">{{ err.message }}</p>
+      }
+    }
+  }
+</div>
+
+<ng-template #inputType>
+  @switch (multiline()) {
+    @case (true) {
+      <textarea
+        (input)="onValueInput($event)"
+        (blur)="touchedChange.emit()"
+        [value]="value()"
+        [placeholder]="placeholder()"
+        [id]="labelText()"
+        class="field__control"></textarea>
+    }
+    @default {
+      <input
+        (input)="onValueInput($event)"
+        (blur)="touchedChange.emit()"
+        [value]="value()"
+        [autocomplete]="false"
+        [placeholder]="placeholder()"
+        [id]="labelText()"
+        class="field__control"
+        type="text"/>
+    }
+  }
+</ng-template>

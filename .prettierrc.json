@@ -23,13 +23,9 @@
     "<THIRD_PARTY_MODULES>",
     "^@app/(.*)$",
     "^@core/(.*)$",
-    "^@environments/(.*)$",
+    "^@services/(.*)$",
     "^@shared/(.*)$",
-    "^@widgets/(.*)$",
     "^@layouts/(.*)$",
-    "^@pages/(.*)$",
-    "^@store/(.*)$",
-    "^@ui/(.*)$",
     "^[./]"
   ],
   "overrides": [

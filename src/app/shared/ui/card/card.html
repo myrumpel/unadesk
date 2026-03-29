@@ -1,0 +1,11 @@
+<article [ngClass]="{'interactive': interactive()}" class="card">
+  <div class="card__title">
+    <ng-content select="[uk-card-title]"/>
+  </div>
+  <div class="card__text">
+    <ng-content/>
+  </div>
+  <div class="card__footer">
+    <ng-content select="[uk-card-footer]"/>
+  </div>
+</article>

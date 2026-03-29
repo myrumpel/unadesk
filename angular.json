@@ -15,7 +15,11 @@
         "@schematics/angular:component": {
           "standalone": true,
           "changeDetection": "OnPush",
-          "style": "scss"
+          "style": "scss",
+          "skipTests": true
+        },
+        "@schematics/angular:pipe": {
+          "skipTests": true
         },
         "@schematics/angular:application": {
           "style": "scss"
@@ -30,6 +34,11 @@
           "options": {
             "browser": "src/main.ts",
             "tsConfig": "tsconfig.app.json",
+            "stylePreprocessorOptions": {
+              "includePaths": [
+                "."
+              ]
+            },
             "assets": [
               {
                 "glob": "**/*",
@@ -37,6 +46,8 @@
               }
             ],
             "styles": [
+              "reset.css",
+              "generated/tokens.css",
               "src/styles.scss"
             ]
           },

@@ -1,0 +1,52 @@
+<main class="home">
+  <section class="home__header">
+    <p>Статьи</p>
+    <uk-button (clicked)="newArticleOpen.set(true)">Создать статью +</uk-button>
+  </section>
+  <section class="home__content">
+    <div class="home__articles">
+
+      @if (articlesService.articles().length === 0) {
+        <p class="home__empty">Пока нет статей.</p>
+      }
+      @for (a of articlesService.articles(); track a.id) {
+
+        <uk-card [interactive]="true" (click)="openDetail(a.id)">
+          <ng-container uk-card-title>{{ a.title }}</ng-container>
+          <p>{{ a.body }}</p>
+
+
+          <ng-container uk-card-footer>
+            <uk-article-date [createdAt]="a.createdAt" [updatedAt]="a.updatedAt"/>
+          </ng-container>
+
+
+        </uk-card>
+      }
+
+    </div>
+    <router-outlet/>
+  </section>
+</main>
+
+@if (newArticleOpen()) {
+
+
+  <uk-modal (closeModal)="closeNewArticleModal()" [open]="newArticleOpen()">
+    <ng-container uk-modal-title>
+      Создание статьи
+    </ng-container>
+    <form [formRoot]="newArticleForm" (ngSubmit)="onCreateArticle()">
+      <uk-input placeholder="Введите текст без специальных символов" labelText="Заголовок статьи"
+                [formField]="newArticleForm.title"/>
+      <uk-input placeholder="Введите текст без специальных символов"
+                labelText="Основной текст статьи"
+                [multiline]="true" [formField]="newArticleForm.body"/>
+    </form>
+    <ng-container uk-modal-footer>
+      <uk-button [variant]="ButtonVariant.SECONDARY" (clicked)="newArticleOpen.set(false)">Отмена</uk-button>
+      <uk-button [variant]="ButtonVariant.PRIMARY" (clicked)="onCreateArticle()">Создать</uk-button>
+    </ng-container>
+  </uk-modal>
+}
+

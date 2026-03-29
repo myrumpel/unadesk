@@ -1,0 +1,77 @@
+@let a = article();
+@if (a) {
+  <div class="detail">
+
+    <uk-card [interactive]="false">
+      <ng-container uk-card-title>
+        <p [ngStyle]="{'maxWidth': '70%'}">{{ a.title }}</p>
+        <uk-article-date [createdAt]="a.createdAt" [updatedAt]="a.updatedAt"/>
+      </ng-container>
+
+      <uk-article-readonly-body [segments]="bodySegments()"/>
+
+      <ng-container uk-card-footer>
+        <uk-button [variant]="ButtonVariant.SECONDARY" (clicked)="deleteIsOpen.set(true)">Удалить</uk-button>
+        <uk-button [variant]="ButtonVariant.PRIMARY" (clicked)="editArticle(a)">Редактировать</uk-button>
+      </ng-container>
+    </uk-card>
+
+  </div>
+  @if (annotationPanelShow()) {
+    <div #panel class="annotation-panel-wrap">
+      <uk-card>
+        <form class="annotation-panel-keeper" [formRoot]="annotationForm" (ngSubmit)="saveAnnotation()">
+          <p class="annotation-hint">Выберите цвет и введите примечание. Подчёркнутый фрагмент покажет текст подсказки при наведении.</p>
+
+          <uk-input labelText="Аннотация" placeholder="Текст примечания к выделенному фрагменту"
+                    [formField]="annotationForm.note"/>
+
+          <uk-color-picker [formField]="annotationForm.color" [colors]="ANNOTATION_HEX"/>
+        </form>
+        <ng-container uk-card-footer>
+          <uk-button size="small" [variant]="ButtonVariant.SECONDARY" type="button" (clicked)="cancelAnnotation()">
+            Отменить
+          </uk-button>
+          <uk-button size="small" [variant]="ButtonVariant.PRIMARY" type="button" (clicked)="saveAnnotation()">
+            Сохранить
+          </uk-button>
+        </ng-container>
+      </uk-card>
+    </div>
+  }
+  @if (deleteIsOpen()) {
+    <uk-modal [open]="deleteIsOpen()" (closeModal)="deleteIsOpen.set(false)">
+      <ng-container uk-modal-title>
+        Удаление статьи
+      </ng-container>
+      <p>Вы действительно хотите удалить статью?</p>
+      <ng-container uk-modal-footer>
+        <uk-button [variant]="ButtonVariant.SECONDARY" (clicked)="deleteIsOpen.set(false)">Отмена</uk-button>
+        <uk-button [variant]="ButtonVariant.DANGER" (clicked)="deleteArticle(a.id)">Удалить</uk-button>
+      </ng-container>
+    </uk-modal>
+  }
+  @if (editIsOpen()) {
+    <uk-modal [open]="editIsOpen()" (closeModal)="editIsOpen.set(false)">
+      <ng-container uk-modal-title>
+        Редактирование статьи
+      </ng-container>
+      <form [formRoot]="editForm" (ngSubmit)="saveEditArticle(a.id)">
+        <uk-input placeholder="Текст без форматирования" labelText="Заголовок статьи"
+                  [formField]="editForm.title" autofocus/>
+        <uk-input placeholder="Текст без форматирования и изображений"
+                  labelText="Текст статьи"
+                  [multiline]="true" [formField]="editForm.body"/>
+      </form>
+      <ng-container uk-modal-footer>
+        <uk-button [variant]="ButtonVariant.SECONDARY" (clicked)="editIsOpen.set(false)">Отмена</uk-button>
+        <uk-button [variant]="ButtonVariant.PRIMARY" (clicked)="saveEditArticle(a.id)">Сохранить</uk-button>
+      </ng-container>
+    </uk-modal>
+  }
+} @else {
+  <div class="detail-not-found">
+    <p>Статья не найдена.</p>
+    <uk-button [variant]="ButtonVariant.PRIMARY" (clicked)="goHome()">На главную</uk-button>
+  </div>
+}

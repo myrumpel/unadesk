@@ -1,0 +1,17 @@
+<div class="colors-list">
+
+  @for (color of colors(); track color) {
+    @let colorMatch = value() === color;
+    <span class="circle" [ngStyle]="{backgroundColor: color, transform: colorMatch ? 'scale(1.15)' : ''}"
+          [ngClass]="{'picked': colorMatch}"
+          (click)="pickColor(color)"></span>
+  }
+  <div class="date-picker-wrapper">
+    <label
+      [ngClass]="{'picked': customInputFacadeColor()}"
+      [ngStyle]="{backgroundColor: customInputFacadeColor() ?? null, transform: customInputFacadeColor() !== null ? 'scale(1.15)' : ''}"
+      class="color-picker-facade"
+      for="color-picker">+</label>
+    <input (input)="onValueInput($event)" [value]="value()" id="color-picker" type="color">
+  </div>
+</div>

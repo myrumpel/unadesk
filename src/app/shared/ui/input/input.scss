@@ -1,0 +1,99 @@
+@use 'generated/tokens' as *;
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: $space-1;
+  width: 100%;
+  position: relative;
+  padding: 20px 0 20px;
+  transition: border .15s ease;
+
+  &__label {
+    font-size: 12px;
+    color: $color-text-muted;
+    position: absolute;
+    top: $space-6;
+    left: 4px;
+    background-color: $color-surface-muted;
+    border: 1px solid $color-primary-light;
+    padding: 0 16px;
+    border-radius: $radius-xl;
+    transition: color .15s ease, transform .15s ease, font-size .15s ease, padding .15s ease;
+
+  }
+
+  &__error {
+    font-size: $fz-xs;
+    color: $color-danger;
+    position: absolute;
+    bottom: 0;
+    left: 12px;
+  }
+
+  &__control {
+    display: flex;
+    outline: none;
+    margin: 0;
+    padding: $space-7 $space-3 $space-3;
+    font-size: $fz-sm;
+    line-height: 1.35;
+    background-color: $color-surface;
+    border: 1px solid $color-border;
+    border-radius: $radius-2xl;
+    box-shadow: $shadow-sm;
+
+    transition: border-color .15s ease, box-shadow 0.25s ease;
+
+    &::placeholder {
+      color: $color-text-muted;
+    }
+
+    &:hover:not(:disabled):not(:focus) {
+      border-color: $color-border-strong;
+
+    }
+
+    &:focus {
+      border-color: $color-primary-light;
+      box-shadow: $shadow-md;
+    }
+
+
+  }
+
+  &--error .field__control {
+    border-color: $color-danger;
+
+    &:focus {
+      box-shadow: 0 0 0 1px $color-danger;
+    }
+  }
+
+
+  &:disabled {
+    color: $color-text-disabled;
+    background-color: $color-surface-muted;
+    border-color: $color-border;
+    cursor: not-allowed;
+  }
+
+  &:focus-within {
+    .field__label {
+      color: $color-primary;
+      transform: translateY(-20px);
+      font-size: 12px;
+      padding: 2px 14px;
+    }
+
+
+  }
+
+  textarea.field__control {
+    resize: none;
+    min-height: 104px;
+  }
+
+}
+
+

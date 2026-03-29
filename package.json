@@ -8,12 +8,13 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "lint": "ng lint",
+    "prestart": "npm run generate-tokens",
+    "generate-tokens": "node gen-tokens/gen-design-tokens.mjs",
     "lint:eslint": "eslint .",
     "stylelint": "stylelint \"src/**/*.{css,scss}\" --allow-empty-input",
     "stylelint:fix": "stylelint \"src/**/*.{css,scss}\" --fix --allow-empty-input",
     "format": "prettier --write \"src/**/*.{ts,html,css,scss}\" \"*.{json,md,mjs}\"",
     "format:check": "prettier --check \"src/**/*.{ts,html,css,scss}\" \"*.{json,md,mjs}\"",
-    "format:write": "prettier --write \"src/**/*.{ts,html,css,scss}\" \"*.{json,md,mjs}\"e",
     "prepare": "husky"
   },
   "lint-staged": {
@@ -47,6 +48,7 @@
     "@angular/compiler-cli": "^21.2.0",
     "@eslint/js": "^10.0.1",
     "@trivago/prettier-plugin-sort-imports": "^6.0.2",
+    "@types/node": "^25.5.0",
     "angular-eslint": "21.3.1",
     "eslint": "^10.0.3",
     "eslint-config-prettier": "^10.1.8",

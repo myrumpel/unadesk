@@ -1,0 +1,7 @@
+@if (updatedAt() === null) {
+  <span class="date-info">Создана
+              <span class="date">{{ createdAt() | date: 'd.MM.yy, h:mm a' }}</span></span>
+} @else {
+  <span class="date-info">Отредактировано
+              <span class="date">{{ updatedAt() | date: 'd.MM.yy, h:mm a' }}</span></span>
+}

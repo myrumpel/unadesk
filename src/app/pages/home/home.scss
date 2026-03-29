@@ -1,0 +1,38 @@
+@use 'generated/tokens' as *;
+
+.home {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+
+  &__articles {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    width: 40%;
+  }
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 8px;
+    border-radius: $radius-lg;
+    background-color: $color-surface-elevated;
+
+    p {
+      font-size: $fz-2xl;
+      font-weight: 600;
+    }
+  }
+
+  &__content {
+    display: flex;
+    gap: 8px;
+  }
+}
+
+.date {
+  font-size: 12px;
+  font-weight: 500;
+}

@@ -1,4 +1,3 @@
-// @ts-check
 import js from '@eslint/js'
 import angular from 'angular-eslint'
 import eslintConfigPrettier from 'eslint-config-prettier/flat'

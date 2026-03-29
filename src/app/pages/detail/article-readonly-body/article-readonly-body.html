@@ -1,0 +1,13 @@
+<p #root id="article-root" class="article-root" role="article">
+  @for (seg of segments(); track seg.key) {
+    @if (seg.kind === 'text') {
+      <span class="article-root__text">{{ seg.text }}</span>
+    } @else {
+      <span
+        class="article-root__annotated"
+        [style.text-decoration-color]="seg.annotation.color"
+        [attr.title]="seg.annotation.note"
+      >{{ seg.text }}</span>
+    }
+  }
+</p>
